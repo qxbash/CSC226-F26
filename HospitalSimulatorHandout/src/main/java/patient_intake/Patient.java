@@ -14,6 +14,13 @@ public class Patient extends Person {
                    String assignedRoom, int arrivalHour, String insuranceID) {
         super(firstName, lastName, age);
         // TODO REQUIRED: Initialize the patient-specific fields.
+        this.patientID = patientID;
+        this.chiefComplaint = chiefComplaint;
+        this.triageLevel = triageLevel;
+        this.currentStage = currentStage;
+        this.assignedRoom = assignedRoom;
+        this.arrivalHour = arrivalHour;
+        this.insuranceID = insuranceID;
     }
 
     // Getters

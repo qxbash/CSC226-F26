@@ -6,6 +6,9 @@ public class Person {
     protected int age;
 
     public Person(String firstName, String lastName, int age) {
-        // TODO REQUIRED: Store the shared first name, last name, and age.
-    }
+        // COMPLETED: Stores the variables for firstName, LastName, and age
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+    }   
 }
