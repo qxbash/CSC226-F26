@@ -14,20 +14,47 @@ public class PatientRegistry {
     }
 
     public void addPatient(Patient patient) {
-        // TODO REQUIRED: Add a patient to the registry.
-        // TODO OPTIONAL (+5%): Expand the array when it becomes full.
+         if (size == patientRegistry.length) {
+        Patient[] newRegistry = new Patient[patientRegistry.length * 2];
+        
+        // ← Copy all current patients into new, larger array
+        for (int i = 0; i < size; i++) {
+            newRegistry[i] = patientRegistry[i];
+        }
+        
+        patientRegistry = newRegistry;  // Replace old array with new one
     }
+    
+    patientRegistry[size] = patient;   // Store new patient in current position
+    size++;                            // Increment the count of stored patients
+}
 
-    /**
-     * Returns the patients currently stored in the registry.
-     * The optional encapsulation extension requires returning a defensive copy.
-     */
+        // COMPLETED: Add a patient to the registry.
+        // COMPLETED (+5%): Expand the array when it becomes full.
+    }
     public Patient[] getPatientRegistry() {
-        return null; // TODO REQUIRED: Return the patients currently stored.
+        // Creates hardened copy to prevent external modification
+        Patient[] copy = new Patient[size];
+        
+        for (int i = 0; i < size; i++) {
+            copy[i] = patientRegistry[i];  // ← Copy only the stored patients
+        }
+        
+        return copy;   // ← Return the hardened copy, not the backing array
+    } 
+        // COMPLETED Return the patients currently stored.
     }
 
     public Patient getPatientByID(String patientID) {
-        return null; // TODO REQUIRED: Search for and return the matching patient.
+        for (int i = 0; i < size; i++) {
+        
+         if (patientRegistry[i].getPatientID().equals(patientID)) {
+            return patientRegistry[i];   // ← Return the matching patient
+        }
+    }
+    
+    return null; 
+        // COMPLETED: for and return the matching patient.
     }
 
     /**
@@ -36,7 +63,37 @@ public class PatientRegistry {
      * @return true if patient was found and removed, false otherwise
      */
     public boolean removePatient(String patientID) {
-        return false; // TODO OPTIONAL (+5%): Remove the patient with this ID.
+         int index = -1;  // TrackS where patient is found
+    
+    // ← Find patient by ID
+    for (int i = 0; i < size; i++) {
+        if (patientRegistry[i].getPatientID().equals(patientID)) {
+            index = i;   /
+            break;      
+        }
+    }
+    
+    //  If patient wasn't found, return false
+    if (index == -1) {
+        return false;
+    }
+    
+    // Remove patient by shifting remaining elements left
+    for (int i = index + 1; i < size; i++) {
+            patientRegistry[i - 1] = patientRegistry[i];
+        }
+        
+        patientRegistry[size - 1] = null;  // Clear last slot to help garbage collector
+        
+        size--;   // Decrement stored count
+        
+        return true; 
+    }
+    
+    return false;
+}
+
+        // TODO COMPLETED (+5%): Remove the patient with this ID.
     }
 
     /**
@@ -45,8 +102,25 @@ public class PatientRegistry {
      * @return the removed Patient, or null if index is invalid
      */
     public Patient removePatient(int index) {
-        return null; // TODO OPTIONAL (+5%): Remove by index and shift later elements left.
-    }
+        // ← Check if index is valid
+        if (index < 0 || index >= size) {
+            return null;   \
+        }
+        
+        Patient removed = patientRegistry[index];  //  Remember the patient to return
+        
+        // Shift all elements after this position one slot left
+        for (int i = index + 1; i < size; i++) {
+            patientRegistry[i - 1] = patientRegistry[i];
+        }
+        
+        patientRegistry[size - 1] = null;   // Clear last slot
+        
+        size--;   // Decrement stored count
+        
+        return removed;   // ←
+            // TODO COMPLETED (+5%): Remove by index and shift later elements left.
+        }
 
     /**
      * Updates a patient in the registry by matching patientID.
@@ -54,12 +128,31 @@ public class PatientRegistry {
      * @return true if patient was found and updated, false otherwise
      */
     public boolean updatePatient(Patient updatedPatient) {
-        return false; // TODO OPTIONAL (+5%): Replace the patient with the same ID.
+        for (int i = 0; i < size; i++) {
+            if (patientRegistry[i].getPatientID().equals(updatedPatient.getPatientID())) {
+                patientRegistry[i] = updatedPatient;  // Replace old 
+                return true;   
+            }
+        }
+    
+        return false;   
+        // COMPLETED (+5%): Replace the patient with the same ID.
     }
     
     @Override
     public String toString() {
-        return ""; // TODO REQUIRED: Return a useful representation of the registry.
+    if (size == 0) {
+        return "PatientRegistry[]";
+    } else {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < size; i++) {
+            sb.append(patientRegistry[i].toString()).append("\n");
+        }
+        return sb.toString();   // Return the patients' strings combined
+    }
+}
+       
+        // COMPLETED: Return a useful representation of the registry.
     }
 
 }
