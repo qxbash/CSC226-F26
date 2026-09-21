@@ -30,19 +30,19 @@ public class PatientRegistry {
 }
 
         // COMPLETED: Add a patient to the registry.
-        // COMPLETED (+5%): Expand the array when it becomes full.
+        // COMPLETED OPTIONAL (+5%): Expand the array when it becomes full.
     
     public Patient[] getPatientRegistry() {
         // Creates hardened copy to prevent external modification
         Patient[] copy = new Patient[size];
         
         for (int i = 0; i < size; i++) {
-            copy[i] = patientRegistry[i];  // ← Copy only the stored patients
+            copy[i] = patientRegistry[i];  // ←Copy only the stored patients
         }
         
-        return copy;   // ← Return the hardened copy, not the backing array
+        return copy;   // Return the hardened copy, not the backing array
     } 
-        // COMPLETED Return the patients currently stored.
+        // COMPLETED: Return the patients currently stored.
     
 
     public Patient getPatientByID(String patientID) {
@@ -65,7 +65,7 @@ public class PatientRegistry {
     public boolean removePatient(String patientID) {
          int index = -1;  // TrackS where patient is found
     
-    // ← Find patient by ID
+    // Find patient by ID
     for (int i = 0; i < size; i++) {
         if (patientRegistry[i].getPatientID().equals(patientID)) {
             index = i;   
@@ -90,7 +90,7 @@ public class PatientRegistry {
         return true; 
     }
 
-        // COMPLETED (+5%): Remove the patient with this ID.
+        // COMPLETED OPTIONAL: (+5%): Remove the patient with this ID.
     
 
     /**
@@ -99,12 +99,12 @@ public class PatientRegistry {
      * @return the removed Patient, or null if index is invalid
      */
     public Patient removePatient(int index) {
-        // ← Check if index is valid
+        // Check if index is valid
         if (index < 0 || index >= size) {
             return null;   
         }
         
-        Patient removed = patientRegistry[index];  //  Remember the patient to return
+        Patient removed = patientRegistry[index];  // Remember the patient to return
         
         // Shift all elements after this position one slot left
         for (int i = index + 1; i < size; i++) {

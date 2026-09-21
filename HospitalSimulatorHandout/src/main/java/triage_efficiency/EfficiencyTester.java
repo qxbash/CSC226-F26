@@ -11,7 +11,7 @@ public class EfficiencyTester {
      * Search through the patient array one element at a time until the matching
      * patientID is found. Return the Patient if it exists; otherwise return null.
      *
-     * This method must run in O(n) time.
+     * This method must run in O(n) time. "checking one by one"
      */
     public Patient linearSearch(Patient[] patients, String pid) {
         for (int i =0; i < patients.length; i ++) { 
@@ -32,12 +32,22 @@ public class EfficiencyTester {
      * This method works only on an array that is sorted by patientID.
      * Repeatedly divide the search range in half until the target is found.
      *
-     * This method must run in O(log n) time.
+     * This method must run in O(log n) time. "cutting in half each time"
      */
     public Patient binarySearch(Patient[] patients, String pid) {
         // TODO REQUIRED: Implement iterative binary search.
         // The array must be sorted by patientID before calling this method.
-        return null; // Remove this line and implement the method.
+        int lowest = 0; // Starts at first index 
+        int highest = patients.length; // the latest valid index
+
+        while (lowest <= highest) {
+            int middle = (lowest + highest) / 2;
+
+            String middlePatientID = patients[middle].getPatientID(); 
+
+        }
+         return null; // PLACEHOLDER!: not finished with binary search method yet! 
+
     }
 
     /**

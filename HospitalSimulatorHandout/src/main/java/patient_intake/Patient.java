@@ -82,7 +82,7 @@ public class Patient extends Person {
 
     public void setAge(int age) {
         // COMPLETED: Update the age.
-        // OPTIONAL (+5%): Reject ages outside the range 0 through 120.
+        // COMPLETED OPTIONAL (+5%): Reject ages outside the range 0 through 120.
         if (age >= 0 && age <= 120) {
         this.age = age;   // Only assign valid age
     }
@@ -123,7 +123,7 @@ public class Patient extends Person {
             ", triageLevel=" + this.triageLevel +
             ", currentStage='" + this.currentStage + '\'' +
             ", assignedRoom='" + this.assignedRoom + '\'' +
-            ", arrivalHour=" + this.arrivalHour + 
+            ", arrivalHour=" + this.arrivalHour + '\'' +
             ", insuranceID='" + this.insuranceID;
 } // COMPLETED: Return a useful representation of a patient.
     }
