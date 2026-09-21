@@ -1,6 +1,6 @@
 package triage_efficiency;
 
-import java.util.*;
+import java.util.*; 
 import patient_intake.Patient;
 
 public class EfficiencyTester {
@@ -14,11 +14,18 @@ public class EfficiencyTester {
      * This method must run in O(n) time.
      */
     public Patient linearSearch(Patient[] patients, String pid) {
-        // TODO REQUIRED: Implement linear search.
-        // Search the entire array in order and return the matching Patient.
-        return null; // Remove this line and implement the method.
-    }
+        for (int i =0; i < patients.length; i ++) { 
 
+            if (patients[i].getPatientID().equals(pid)) { // .equals is needed for strings
+                
+                return patients[i];
+            }
+        // COMPLETED: Implemented linear search.
+        // Search the entire array in order and return the matching Patient.
+        }
+        return null;
+    }
+        
     /**
      * REQUIRED (80%): Implement binary search.
      *
@@ -37,7 +44,7 @@ public class EfficiencyTester {
      * OPTIONAL (+5%): Implement a different O(log n) search algorithm.
      *
      * Pick one of the following approaches and implement it:
-     * - Exponential search
+     * - Exponential search  
      * - Jump search
      * - Ternary search
      *

@@ -123,9 +123,7 @@ public class Patient extends Person {
             ", triageLevel=" + this.triageLevel +
             ", currentStage='" + this.currentStage + '\'' +
             ", assignedRoom='" + this.assignedRoom + '\'' +
-            ", arrivalHour=" + this.arrivalHour +
-            ", insuranceID='" + this.insuranceID + '\'' +
-            '}';
+            ", arrivalHour=" + this.arrivalHour + 
+            ", insuranceID='" + this.insuranceID;
 } // COMPLETED: Return a useful representation of a patient.
     }
-}

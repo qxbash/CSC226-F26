@@ -10,7 +10,7 @@ public class PatientRegistry {
     private static final int INITIAL_CAPACITY = 10;
 
     public PatientRegistry() {
-        // TODO REQUIRED: Create the initial array and set the starting size.
+        // COMPLETED: Create the initial array and set the starting size.
     }
 
     public void addPatient(Patient patient) {
@@ -22,7 +22,7 @@ public class PatientRegistry {
             newRegistry[i] = patientRegistry[i];
         }
         
-        patientRegistry = newRegistry;  // Replace old array with new one
+        patientRegistry = newRegistry;  // Replaces old array with new one
     }
     
     patientRegistry[size] = patient;   // Store new patient in current position
@@ -31,7 +31,7 @@ public class PatientRegistry {
 
         // COMPLETED: Add a patient to the registry.
         // COMPLETED (+5%): Expand the array when it becomes full.
-    }
+    
     public Patient[] getPatientRegistry() {
         // Creates hardened copy to prevent external modification
         Patient[] copy = new Patient[size];
@@ -43,13 +43,13 @@ public class PatientRegistry {
         return copy;   // ← Return the hardened copy, not the backing array
     } 
         // COMPLETED Return the patients currently stored.
-    }
+    
 
     public Patient getPatientByID(String patientID) {
         for (int i = 0; i < size; i++) {
         
          if (patientRegistry[i].getPatientID().equals(patientID)) {
-            return patientRegistry[i];   // ← Return the matching patient
+            return patientRegistry[i];   // Returns the matching patient
         }
     }
     
@@ -59,8 +59,8 @@ public class PatientRegistry {
 
     /**
      * Removes a patient from the registry by patientID.
-     * @param patientID The ID of the patient to remove
-     * @return true if patient was found and removed, false otherwise
+     * param patientID The ID of the patient to remove
+     * return true if patient was found and removed, false otherwise
      */
     public boolean removePatient(String patientID) {
          int index = -1;  // TrackS where patient is found
@@ -68,7 +68,7 @@ public class PatientRegistry {
     // ← Find patient by ID
     for (int i = 0; i < size; i++) {
         if (patientRegistry[i].getPatientID().equals(patientID)) {
-            index = i;   /
+            index = i;   
             break;      
         }
     }
@@ -89,12 +89,9 @@ public class PatientRegistry {
         
         return true; 
     }
-    
-    return false;
-}
 
-        // TODO COMPLETED (+5%): Remove the patient with this ID.
-    }
+        // COMPLETED (+5%): Remove the patient with this ID.
+    
 
     /**
      * Removes a patient from the registry by index.
@@ -104,7 +101,7 @@ public class PatientRegistry {
     public Patient removePatient(int index) {
         // ← Check if index is valid
         if (index < 0 || index >= size) {
-            return null;   \
+            return null;   
         }
         
         Patient removed = patientRegistry[index];  //  Remember the patient to return
@@ -124,8 +121,8 @@ public class PatientRegistry {
 
     /**
      * Updates a patient in the registry by matching patientID.
-     * @param updatedPatient The patient with updated information
-     * @return true if patient was found and updated, false otherwise
+     * param updatedPatient The patient with updated information
+     * return true if patient was found and updated, false otherwise
      */
     public boolean updatePatient(Patient updatedPatient) {
         for (int i = 0; i < size; i++) {
@@ -155,6 +152,6 @@ public class PatientRegistry {
         // COMPLETED: Return a useful representation of the registry.
     }
 
-}
+ 
 
 
