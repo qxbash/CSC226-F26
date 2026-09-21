@@ -3,19 +3,17 @@ package patient_intake;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * StudentAdditionalTests - Six unique JUnit tests for the Patient Intake System.
- * Each test verifies a distinct behavior with comments explaining what it checks
- * and why it matters (as required by WeekOneDeliverables.md).
- */
+
+  // The six unique tests for the patient system marked via @Test
+
 public class StudentAdditionalTests {
 
     private PatientRegistry registry;
     
     @Test
     void testEmptyRegistryToStringDoesNotCrash() {
-        // Tests: toString() on empty registry returns valid string without null pointer exception
-        // Why it matters: Prevents crashes when displaying registry before adding patients
+        // toString() on empty registry returns valid string without null pointer exception
+        // Prevents crashes when displaying registry before adding patients
         registry = new PatientRegistry();
         String result = registry.toString();
         assertNotNull(result, "toString should not return null");
@@ -23,8 +21,8 @@ public class StudentAdditionalTests {
 
     @Test
     void testFindNonExistentPatientReturnsNull() {
-        // Tests: getPatientByID returns null for ID that doesn't exist
-        // Why it matters: Safe handling of queries - caller checks null before using patient data
+        // getPatientByID returns null for ID that doesn't exist
+        // WSafe handling of queries caller checks null before using patient data
         registry = new PatientRegistry();
         Patient found = registry.getPatientByID("INVALID_ID");
         assertNull(found, "Should return null when patient not found");
@@ -32,8 +30,8 @@ public class StudentAdditionalTests {
         
     @Test
     void testFindExistingPatientReturnsCorrectInstance() {
-        // Tests: getPatientByID returns the correct patient when ID exists
-        // Why it matters: Ensures lookup works correctly for valid patient IDs
+        // getPatientByID returns the correct patient when ID exists
+        // Ensures lookup works correctly for valid patient IDs
         registry = new PatientRegistry();
         Patient p1 = new Patient("P001", "John", "Doe", 25, "Fever", 1, "Waiting", "Room1", 8, "INS001");
         registry.addPatient(p1);
@@ -45,8 +43,8 @@ public class StudentAdditionalTests {
 
     @Test
     void testRegistryStoresMultiplePatientsInOrder() {
-        // Tests: Multiple patients are stored and retrievable in correct order
-        // Why it matters: Verifies array-based storage maintains insertion order
+        // Multiple patients are stored and retrievable in correct order
+        // Verifies array-based storage maintains insertion order
         registry = new PatientRegistry();
 
         Patient p1 = new Patient("P001", "Alice", "Brown", 30, "Headache", 2, "Waiting", "Room10", 9, "INS101");
@@ -63,8 +61,8 @@ public class StudentAdditionalTests {
 
     @Test
     void testToStringContainsClassInfo() {
-        // Tests: toString() method includes registry information (not just empty string)
-        // Why it matters: Useful for debugging - developers can see patient count and IDs at a glance
+        // toString() method includes registry information 
+        // Useful for debugging 
         registry = new PatientRegistry();
         String result = registry.toString();
         assertTrue(result.contains("PatientRegistry"), "toString should identify class type");
@@ -72,8 +70,8 @@ public class StudentAdditionalTests {
 
     @Test
     void testPatientDataRetainsValuesAfterAdd() {
-        // Tests: Patient data remains intact after adding to registry
-        // Why it matters: Ensures no accidental modification of patient fields during registry operations
+        // Patient data remains intact after adding to registry
+        // Ensures no accidental modification of patient fields during registry operations
         registry = new PatientRegistry();
 
         Patient original = new Patient("P010", "Original", "Name", 35, "Initial complaint", 4, "Waiting", "Room20", 11, "INS500");
@@ -87,8 +85,8 @@ public class StudentAdditionalTests {
 
     @Test
     void testAddTwoDifferentPatientsToRegistry() {
-        // Tests: Registry can hold multiple patients with different IDs and data
-        // Why it matters: Verifies that adding a second patient doesn't overwrite the first
+        // Registry can hold multiple patients with different IDs and data
+        // Verifies that adding a second patient doesn't overwrite the first
         registry = new PatientRegistry();
 
         Patient p1 = new Patient("P001", "Alice", "Brown", 30, "Fever", 1, "Waiting", "Room10", 8, "INS001");
