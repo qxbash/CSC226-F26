@@ -38,7 +38,7 @@ Complete all four core checkpoints for the required 80%. The optional extension 
 Create a short document or markdown file comparing the following search methods on data sets of different sizes:
 
 | Dataset Size | Linear Search Time | Binary Search Time | Alternative O(log n) Time |
-|--------------|-------------------|-------------------|-----------------------------|
+|--------------|-------------------|-------------------|---------------- -------------|
 | 100 patients | ___ ns | ___ ns | ___ ns |
 | 1,000 patients | ___ ns | ___ ns | ___ ns |
 | 10,000 patients | ___ ns | ___ ns | ___ ns |

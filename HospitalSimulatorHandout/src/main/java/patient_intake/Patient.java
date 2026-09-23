@@ -25,43 +25,43 @@ public class Patient extends Person {
 
     // Getters
     public String getPatientID() {
-        return this.getPatientID(); // COMPLETED: Return the patient ID.
+        return patientID;
     }
 
     public String getFirstName() {
-        return this.getFirstName(); // COMPLETED: Return the first name.
+        return firstName;
     }
 
     public String getLastName() {
-        return this.getLastName(); // COMPLETED: Return the last name.
+        return lastName;
     }
 
     public int getAge() {
-        return this.getAge(); // COMPLETED: Return the age.
+        return age;
     }
 
     public String getChiefComplaint() {
-        return this.getChiefComplaint(); // COMPLETED: Return the chief complaint.
+        return chiefComplaint;
     }
 
     public int getTriageLevel() {
-        return this.getTriageLevel(); // COMPLETED: Return the triage level.
+        return triageLevel;
     }
 
     public String getCurrentStage() {
-        return this.getCurrentStage(); // COMPLETED: Return the current stage.
+        return currentStage;
     }
 
     public String getAssignedRoom() {
-        return this.getAssignedRoom(); // COMPLETED: Return the assigned room.
+        return assignedRoom;
     }
 
     public int getArrivalHour() {
-        return this.getArrivalHour(); // COMPLETED: Return the arrival hour.
+        return arrivalHour;
     }
 
     public String getInsuranceID() {
-        return this.getInsuranceID(); // COMPLETED: Return the insurance ID.
+        return insuranceID;
     }
 
     // Setters
@@ -127,3 +127,6 @@ public class Patient extends Person {
             ", insuranceID='" + this.insuranceID;
 } // COMPLETED: Return a useful representation of a patient.
     }
+
+
+

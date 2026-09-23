@@ -11,7 +11,9 @@ public class PatientRegistry {
 
     public PatientRegistry() {
         // COMPLETED: Create the initial array and set the starting size.
-    }
+        this.patientRegistry = new Patient[INITIAL_CAPACITY];
+        this.size = 0;
+}
 
     public void addPatient(Patient patient) {
          if (size == patientRegistry.length) {
@@ -138,20 +140,25 @@ public class PatientRegistry {
     
     @Override
     public String toString() {
-    if (size == 0) {
-        return "PatientRegistry[]";
-    } else {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < size; i++) {
-            sb.append(patientRegistry[i].toString()).append("\n");
+        StringBuilder result = new StringBuilder();
+        result.append("PatientRegistry\n");
+
+            for (int i = 0; i < size; i++) {
+            Patient p = patientRegistry[i];
+            result.append(p.toString());
+            if (i != 0) {
+                result.append("\n");
+            } else {
+                result.append("\nsize:");
         }
-        return sb.toString();   // Return the patients' strings combined
     }
+        return result.toString();
 }
        
         // COMPLETED: Return a useful representation of the registry.
     }
 
  
+
 
 
