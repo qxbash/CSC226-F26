@@ -11,6 +11,7 @@ public class LinkedListExamples {
         head.getNext().getNext().setNext(new LLNode<>("Fourth"));
         
         // Test your functions here
+        
     }
     
     
@@ -20,7 +21,10 @@ public class LinkedListExamples {
      */
     public static <T> void displayWithPositions(LLNode<T> head) {
         // TODO: Implement this function
-        // hint: Use a counter variable and traverse the list    
+        // hint: Use a counter variable and traverse the list   
+        for ( i = 0; i < counter; i++) {
+
+        } 
     }
     
     /**
