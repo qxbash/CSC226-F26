@@ -20,24 +20,30 @@ public class LinkedStack<T> implements StackInterface<T> {
         //remove an element from the top of the stack
         //note: what preconditions do we care about?
 
-        // sets current top 
-        LLNode<T> currentTop = top; 
+        if (isEmpty()) {
+            return; // Cannot pop from empty stack
+        }
 
-        T returnedData = currentTop.getInfo();
+        LLNode<T> currentTop = top;
+        T poppedElement = currentTop.getInfo();
 
         top = currentTop.getNext();
-        
-    }
-    public T top(){
-        //return the data in the element from the top of the stack
-        //note: what preconditions do we care about?
-        return ; // placeholder
     }
 
+    public T top(){
+        // return the data in the element from the top of the stack
+        if (isEmpty()) {
+            return null;
+        }
+        return top.getInfo(); 
+    }
+    
+
     public boolean isEmpty(){
-        return false; //placeholder
+        return top == null; // Stack is empty when top is null
     }
     public boolean isFull(){
-        return true; //placeholder
+        return false; 
     }
 }
+

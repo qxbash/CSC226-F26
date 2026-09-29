@@ -22,8 +22,9 @@ public class LinkedListExamples {
     public static <T> void displayWithPositions(LLNode<T> head) {
         // TODO: Implement this function
         // hint: Use a counter variable and traverse the list   
-        for ( i = 0; i < counter; i++) {
-
+        int counter = 0;
+        for (LLNode<T> current = head; current != null; current = current.getNext(), counter++) {
+            System.out.print(counter  current.getInfo());
         } 
     }
     
