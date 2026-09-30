@@ -22,7 +22,7 @@ public class StudentAdditionalTests {
     @Test
     void testFindNonExistentPatientReturnsNull() {
         // getPatientByID returns null for ID that doesn't exist
-        // WSafe handling of queries caller checks null before using patient data
+        // Safe handling of queries caller checks null before using patient data
         registry = new PatientRegistry();
         Patient found = registry.getPatientByID("INVALID_ID");
         assertNull(found, "Should return null when patient not found");

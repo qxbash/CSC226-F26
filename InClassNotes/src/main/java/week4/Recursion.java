@@ -9,10 +9,18 @@ public class Recursion {
         
     }
     public static Integer countHi(String value){
-    
-
+    if (value == null || value.length() < 2) {
+        return 0;
     }
-    public static <T> void iterativePrinter(LLNode<T> node){
+    if (value.substring(0, 2).equals("hi")) {
+        // "hi" found at current position, skip both characters
+        return 1 + countHi(value.substring(2));
+    } else {
+        // "hi" not found here, check next position
+        return countHi(value.substring(1));
+    }
+}
+public static <T> void iterativePrinter(LLNode<T> node){
         while(node !=null){
             if(node.getInfo()!=null){
                 System.out.println(node.getInfo());
@@ -21,11 +29,21 @@ public class Recursion {
         }
     }
     public static <T> void recursivePrinter(LLNode<T> node){
-       return  
-    }
-
-    public static <T> int recursiveCounter(LLNode<T> node, int counter){
-        
+       if(node != null) {
+        System.out.println(node.getInfo());
+        recursivePrinter(node.getNext());
     }
 
 }
+
+    public static <T> int recursiveCounter(LLNode<T> node, int counter){
+    if(node != null) {
+        // Move to next node and increment counter
+        return recursiveCounter(node.getNext(), counter + 1);
+    } else {
+        // Base case: reached end of list
+        return counter;
+    }
+
+}
+

@@ -19,12 +19,10 @@ public class LinkedListExamples {
      * 2. Program to display both elements and their position in a linked list
      * Shows: Position 0: "First", Position 1: "Second", etc.
      */
-    public static <T> void displayWithPositions(LLNode<T> head) {
-        // TODO: Implement this function
-        // hint: Use a counter variable and traverse the list   
+    public static <T> void displayWithPositions(LLNode<T> head) {  
         int counter = 0;
         for (LLNode<T> current = head; current != null; current = current.getNext(), counter++) {
-            System.out.print(counter  current.getInfo());
+            System.out.print(counter + " " + current.getInfo());
         } 
     }
     
@@ -33,10 +31,22 @@ public class LinkedListExamples {
      * Returns the new head of the list (important if first element is removed)
      */
     public static <T> LLNode<T> removeElement(LLNode<T> head, T target) {
-        // TODO: Implement this function
         // Handle special case: removing the first element
+        if (head != null && head.getInfo().equals(target)) {
+            return head.getNext();
+        }
+        
         // For other elements: find the node before the target
-        return head; // placeholder
+        LLNode<T> current = head;
+        while (current != null && current.getNext() != null) {
+            if (current.getNext().getInfo().equals(target)) {
+                current.setNext(current.getNext().getNext());
+                return head; 
+            }
+            current = current.getNext();
+        }
+        
+        return head; // Target not found, return original list unchanged
     }
     
     /**
@@ -44,9 +54,7 @@ public class LinkedListExamples {
      * Returns null (empty list)
      */
     public static <T> LLNode<T> removeAllElements(LLNode<T> head) {
-        // TODO: Implement this function
-        // Hint: This is simpler than you might think!
-        return null; // placeholder
+        return null;
     }
     
     /**
@@ -54,19 +62,39 @@ public class LinkedListExamples {
      * Creates a completely new list with the same values
      */
     public static <T> LLNode<T> copyList(LLNode<T> original) {
-        // TODO: Implement this function
-        // Create new nodes for each element in the original list
-        return null; // placeholder
-    }
+        // Handle empty list case
+        if (original == null) {
+            return null;
+        }
     
+        // Create first node for the copy
+        LLNode<T> copyHead = new LLNode<>(original.getInfo());
+        LLNode<T> currentOriginal = original.getNext();
+        LLNode<T> currentCopy = copyHead;
+
+        // Continue copying remaining nodes
+        while (currentOriginal != null) {
+            currentCopy.setNext(new LLNode<>(currentOriginal.getInfo()));
+            currentCopy = currentCopy.getNext();
+            currentOriginal = currentOriginal.getNext();
+        }
+
+        return copyHead;
+    }
+
     /**
      * 6. Program to check if a particular element exists in a linked list
      * Returns true if found, false otherwise
      */
     public static <T> boolean contains(LLNode<T> head, T target) {
-        // TODO: Implement this function
-        // Traverse the list and compare each element with target
-        return false; // placeholder
+        LLNode<T> current = head;
+        while (current != null) {
+            if (current.getInfo().equals(target)) {
+                return true;
+            }
+            current = current.getNext();
+        }
+        return false;
     }
     
     /**
@@ -74,8 +102,13 @@ public class LinkedListExamples {
      * Useful for other operations
      */
     public static <T> int getLength(LLNode<T> head) {
-        // TODO: Implement this helper function
-        return 0; // placeholder
+        int count = 0;
+        LLNode<T> current = head;
+        while (current != null) {
+            count++;
+            current = current.getNext();
+        }
+        return count;
     }
 
     /**
@@ -83,9 +116,15 @@ public class LinkedListExamples {
      * Returns an ArrayList containing all elements in the same order
      */
     public static <T> ArrayList<T> toArrayList(LLNode<T> head) {
-        // TODO: Implement this function
-        // Create ArrayList and add each element from the linked list
-        return new ArrayList<>(); // placeholder
+        ArrayList<T> result = new ArrayList<>();
+        LLNode<T> current = head;
+        
+        while (current != null) {
+            result.add(current.getInfo());
+            current = current.getNext();
+        }
+        
+        return result;
     }
         
     /**
@@ -93,7 +132,18 @@ public class LinkedListExamples {
      * Returns null if position is out of bounds
      */
     public static <T> T getElementAt(LLNode<T> head, int position) {
-        // TODO: Implement this helper function
-        return null; // placeholder
+        LLNode<T> current = head;
+        int index = 0;
+        
+        while (current != null && index <= position) {
+            if (index == position) {
+                return current.getInfo();
+            }
+            current = current.getNext();
+            index++;
+        }
+        
+        return null; // Position out of bounds or not found
     }
 }
+

@@ -80,7 +80,7 @@ public class Main {
         for (int i = 0; i < count; i++) {
             String id = "P" + String.format("%05d", i + 1); // Assigns ID with preceding 5 ints
 
-            // Use modulo to wrap around if complaint array is shorter than count
+            // Use module to wrap around if complaint array is shorter than count
             String complaint = complaints[i % complaints.length];
 
             patients[i] = new Patient(
