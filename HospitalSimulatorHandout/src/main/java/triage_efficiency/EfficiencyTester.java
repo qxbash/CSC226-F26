@@ -62,38 +62,98 @@ public class EfficiencyTester {
 
     /**
      * OPTIONAL (+5%): Implement a different O(log n) search algorithm.
-     *
+     
      * Pick one of the following approaches and implement it:
-     * - Exponential search  
-     * - Jump search
-     * - Ternary search
-     *
-     * Add a short comment above the method explaining:
-     * - which algorithm you chose
-     * - where you learned about it
-     * - why it works
+     * Jump search
+     * SOURCE: https://medium.com/@robinviktorsson/jump-search-algorithm-in-java-learn-with-practical-examples-633876051750
+        (I reffered to this article for understanding the concept of jump search.)
+     
+        * Why does it work?:
+        I chose jump search because it is practical for when an arrray cannot be accessed randomly. 
+        It essentially acts as a modified linear search with jumping capabilities.
+
+        * How it works:
+            1) The algorithm will jump in fixed block sizes until the target is reached or overshot
+            2) It will search backwards from that given point.
+            
      */
-    public Patient logNSearch(Patient[] patients, String pid) {
-        // TODO OPTIONAL: Research and implement a second O(log n) algorithm.
-        // Cite your source and explain the approach in a comment before the logic.
-        return null; // Remove this line and implement the method.
-    }
+    // The implementation of jump search:
+    // public Patient logNSearch(Patient[] patients, String pid) {
+    // if (patients.length == 0) {
+    //     return null;
+    // }
 
-    public void timeDemo() {
-        long startTime = System.nanoTime();
-        for (int i = 0; i < 100000; i++) {
-            int x = 5 + 5;
-        }
-        long endTime = System.nanoTime();
+    // The math function to perform the square root
+    // int jumpSize = (int) Math.sqrt(patients.length);
 
-        System.out.println("The example addition took: " + (endTime - startTime) + " ns");
+    // If array is small or jumpSize is 0 substitute binary search 
+    // if (jumpSize <= 1) {
+    //     return binarySearch(patients, pid);
+    // }
 
-        startTime = System.nanoTime();
-        for (int i = 0; i < 100000; i++) {
-            int x = 5 * 5;
-        }
-        endTime = System.nanoTime();
-        System.out.println("The example multiplication took: " + (endTime - startTime) + " ns");
-    }
+    // int lowest = 0;
+
+    // while (lowest < patients.length) {
+    //     // jumps ahead
+    //     int nextIndex = lowest + jumpSize;
+
+    //     // check bounds
+    //     if (nextIndex >= patients.length) {
+    //         // Final linear search from current position to end
+    //         for (int i = lowest; i < patients.length; i++) {
+    //             if (patients[i].getPatientID().equals(pid)) {
+    //                 return patients[i];
+    //             }
+    //         }
+    //         break;
+    //     }
+
+    //     String nextPatientID = patients[nextIndex].getPatientID();
+
+    //     // if target found
+    //     if (nextPatientID.equals(pid)) {
+    //         return patients[nextIndex];
+    //     } 
+    //     // Target is smaller, go left
+    //     else if (pid.compareTo(nextPatientID) < 0) {
+    //         lowest = nextIndex;
+    //         nextIndex -= jumpSize;
+            
+    //         // Linear search backwards from current position
+    //         while (nextIndex >= lowest && nextIndex > lowest - jumpSize) {
+    //             if (patients[nextIndex].getPatientID().equals(pid)) {
+    //                 return patients[nextIndex];
+    //             }
+    //             nextIndex--;
+    //         }
+    //         break; // Target not found 
+    //     } 
+    //     // keep jumping right if target is larger
+    //     else {lowest = nextIndex;}
+    // }
+    // // check the last position if not returned 
+    // if (lowest < patients.length && patients[lowest].getPatientID().equals(pid)) {
+    //     return patients[lowest];
+    // }
+
+    // return null;
 }
+    // TimeDemo test case:
+    // public void timeDemo() {
+    //     long startTime = System.nanoTime();
+    //     for (int i = 0; i < 100000; i++) {
+    //         int x = 5 + 5;
+    //     }
+    //     long endTime = System.nanoTime();
+
+    //     System.out.println("The example addition took: " + (endTime - startTime) + " ns");
+
+    //     startTime = System.nanoTime();
+    //     for (int i = 0; i < 100000; i++) {
+    //         int x = 5 * 5;
+    //     }
+    //     endTime = System.nanoTime();
+    //     System.out.println("The example multiplication took: " + (endTime - startTime) + " ns");
+    // }
+
 

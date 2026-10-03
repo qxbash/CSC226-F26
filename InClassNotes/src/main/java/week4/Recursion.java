@@ -13,10 +13,10 @@ public class Recursion {
         return 0;
     }
     if (value.substring(0, 2).equals("hi")) {
-        // "hi" found at current position, skip both characters
+        
         return 1 + countHi(value.substring(2));
     } else {
-        // "hi" not found here, check next position
+       
         return countHi(value.substring(1));
     }
 }
