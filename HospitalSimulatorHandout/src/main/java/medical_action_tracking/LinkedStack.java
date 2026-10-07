@@ -14,7 +14,15 @@ public class LinkedStack<T> {
     private int size;
 
     public void push(T item) {
-        // TODO: Reject null items, then link a new node at the top and update size.
+        // COMPLETED: Reject null items, then link a new node at the top and update size.
+        if (item == null) {
+            throw new IllegalArgumentException("Unable to push null.");}
+        
+        Node newNode =  new Node(item);
+        newNode.next = top;
+        top = newNode;
+        size ++;
+
     }
 
     public T pop() {
@@ -28,13 +36,13 @@ public class LinkedStack<T> {
     }
 
     public boolean isEmpty() {
-        // TODO: Determine whether the stack contains any items.
-        return false;
+        // COMPLETED: Determine whether the stack contains any items.
+        return size == 0;
     }
 
     public int size() {
-        // TODO: Return the number of stacked items.
-        return 0;
+        // COMPLETED: Return the number of stacked items.
+        return size;
     }
 
     @Override
