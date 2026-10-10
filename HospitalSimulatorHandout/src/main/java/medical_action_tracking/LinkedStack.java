@@ -26,13 +26,23 @@ public class LinkedStack<T> {
     }
 
     public T pop() {
-        // TODO: Remove and return the top item, or return null when empty.
-        return null;
+        // COMPLETED: Remove and return the top item, or return null when empty.
+        if (size == 0) {
+            return null;
+        }
+        T item = top.data;
+        top = top.next;
+        size --;
+        return item;
+
     }
 
     public T peek() {
-        // TODO: Return the top item without removing it, or null when empty.
-        return null;
+        // COMPLETED: Return the top item without removing it, or null when empty.
+        if (isEmpty()) {
+            return null;
+        }
+        return top.data; // fetches the top of the stack
     }
 
     public boolean isEmpty() {
@@ -47,7 +57,20 @@ public class LinkedStack<T> {
 
     @Override
     public String toString() {
-        // TODO: Build [top, next, ...] by traversing the stack without changing it.
-        return "[]";
+        // COMPLETED: Build [top, next, ...] by traversing the stack without changing it.
+        String result = "[";
+        Node current = top;
+
+        while (current != null) {
+        result = result + current.data;
+
+        if (current.next != null) {
+        result = result + ", ";
+        }
+        current = current.next;
+    }
+        result = result + "]";
+
+        return result;
     }
 }

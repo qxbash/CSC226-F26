@@ -59,7 +59,13 @@ public class EfficiencyTester {
 
         return null; // Not found after exhausting the search range
     }
-
+    /**
+     * Placeholder so the Week 2 tests compile.
+     * Uses binary search (O(log n)). Jump search extension not submitted.
+     */
+    public Patient logNSearch(Patient[] patients, String pid) {
+        return binarySearch(patients, pid);
+    }
     /**
      * OPTIONAL (+5%): Implement a different O(log n) search algorithm.
      
