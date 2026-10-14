@@ -6,7 +6,7 @@ public class LinkedQueue<T> {
         private Node next;
 
         private Node(T data) {
-            this.data = data;
+            this.data = data;  // null when the node is the rear 
         }
     }
 
