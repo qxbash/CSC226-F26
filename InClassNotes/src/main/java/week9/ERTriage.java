@@ -28,17 +28,40 @@ class HeapPQ {
     }
 
     private void swap(int a, int b) {
-        
+        Patient temp = heap[a];
+        heap[a] = heap[b];
+        heap[b] = temp;     // swaps variables 
     }
 
     // TODO Round 1: insert p in the next open slot, then restore the max-heap.
     void enqueue(Patient p) {
+        if (lastIndex = heap.length -1 ) {
+            throw new IllegalStateException("it is full!");  //error exception
+        }
+        lastIndex ++;
+        heap[lastIndex] = p;
+        reheapUp(lastIndex);
     }
 
     // TODO Round 1: swap upward while a patient's severity is greater than its parent's.
     // Parent of i: (i - 1) / 2
     private void reheapUp(int i) {
+    while (i > 0) {
+        int parent = (i - 1) / 2;
+        if (heap[i].severity <= heap[parent].severity) {
+            break;
+        } 
+        swap(i, parent);
+        i = parent;
+
+        }
     }
+
+    
+           
+        
+        
+    
 
     // TODO Round 2: save the root, move the last patient to the root, shrink, and restore the heap.
     Patient dequeue() {
