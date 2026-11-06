@@ -13,7 +13,7 @@ package week10;
  *     (and once more at the very end) so the charts can draw your progress live.
  *     The 2nd chart plots (new collisions / new inserts) between updates: the cost of each insert.
  *   - Return a long[] of exactly two values:  { inserted, collisions }
- *
+ * 
  * What counts as a collision:
  *   - linear / quadratic: every probe that lands on an OCCUPIED slot
  *       (home slot occupied = 1 collision, then one more for each extra occupied slot you hit)
@@ -42,11 +42,30 @@ public class HashRace {
      * @param progress  call progress.update(inserted, collisions) every PROGRESS_EVERY inserts and at the end
      * @return long[]{ inserted, collisions }   e.g. new long[]{100000, 412345}
      */
-    public static long[] linear(long[] keys, int tableSize, ProgressListener progress) {
-        // TODO
-        return null;
-    }
+    // COMPLETED
+public static long[] linear(long[] keys, int tableSize, ProgressListener progress) {
+    long[] table = new long[tableSize];
+    long inserted = 0;
+    long collisions = 0;
 
+    for (long key : keys) {
+        int home = (int) (key % tableSize);
+        int index = home;
+
+        while (table[index] != 0) {
+            collisions++;
+            index = (index + 1) % tableSize;
+        }
+        table[index] = key;
+        inserted++;
+
+        if (inserted % PROGRESS_EVERY == 0) {
+            progress.update(inserted, collisions);
+        }
+    }
+    progress.update(inserted, collisions);
+    return new long[]{inserted, collisions};
+}
     /**
      * QUADRATIC PROBING: if index is taken, try index+1^2, index+2^2, index+3^2, ... (all % tableSize).
      * Use long for the offset math so i*i can't overflow.
@@ -57,8 +76,30 @@ public class HashRace {
      * @return long[]{ inserted, collisions }   e.g. new long[]{100000, 412345}
      */
     public static long[] quadratic(long[] keys, int tableSize, ProgressListener progress) {
-        // TODO
-        return null;
+        // COMPLETED
+        long[] table = new long[tableSize]; // 0 would indicate an empty slot
+        long inserted = 0; // start at 0
+        long collisions = 0; // start at 0
+
+        for (long key : keys) {
+            int home = (int) (key % tableSize);
+            int index = home;
+            long i = 0;
+
+            while (table[index] != 0) {
+                collisions ++;
+                i++; // prevent overflowing using long variable  
+                index = (int) ((home + i * i ) % tableSize);
+            }
+           table[index] = key;
+           inserted++;
+
+           if (inserted % PROGRESS_EVERY == 0) {
+                progress.update(inserted, collisions);
+           }
+        }
+        progress.update(inserted, collisions); 
+        return new long[]{inserted, collisions};
     }
 
     /**
@@ -71,7 +112,24 @@ public class HashRace {
      * @return long[]{ inserted, collisions }   e.g. new long[]{100000, 99999}
      */
     public static long[] bucket(long[] keys, int tableSize, ProgressListener progress) {
-        // TODO
-        return null;
+    Node[] table = new Node[tableSize];
+    long inserted = 0;
+    long collisions = 0;
+
+    for (long key : keys) {
+        int index = (int) (key % tableSize);
+
+        if (table[index] != null) {
+            collisions++;               // bucket already contains a node
+        }
+        table[index] = new Node(key, table[index]);   // insert at head of linked list 
+        inserted++;
+
+        if (inserted % PROGRESS_EVERY == 0) {
+            progress.update(inserted, collisions);
+        }
+    }
+    progress.update(inserted, collisions);
+    return new long[]{inserted, collisions};
     }
 }
