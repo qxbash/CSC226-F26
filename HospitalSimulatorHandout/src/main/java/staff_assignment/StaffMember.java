@@ -34,10 +34,14 @@ public class StaffMember implements Comparable<StaffMember> {
         this.caseLoad = caseLoad;
     }
 
-    // TODO: Order by caseLoad (lowest first), then by staffId to break ties.
+    // COMPLETED: Order by caseLoad (lowest first), then by staffId to break ties.
     @Override
     public int compareTo(StaffMember other) {
-        return 0;
+        int byLoad = Integer.compare(this.caseLoad, other.caseLoad); // person with smallest load sorted first
+        if(byLoad != 0) {
+            return byLoad;
+        }
+        return this.staffId.compareTo(other.staffId);
     }
 
     @Override
