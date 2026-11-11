@@ -1,6 +1,6 @@
 package staff_assignment;
 
-public class Main {
+public class Main { // Does it sync
     public static void main(String[] args) {
         StaffRoster roster = new StaffRoster();
 
